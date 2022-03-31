@@ -28,8 +28,8 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include "Password can't be blank"
       end
       it 'passwordとpassword_confirmationが不一致では登録できない' do
-        @user.password = '123456'
-        @user.password_confirmation = '112233'
+        @user.password = '123abc'
+        @user.password_confirmation = '1a2b3c'
         @user.valid?
         expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
       end
@@ -71,8 +71,8 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが5文字以下では登録できない' do
-        @user.password = '12345'
-        @user.password_confirmation = '12345'
+        @user.password = '123ab'
+        @user.password_confirmation = '123ab'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
@@ -81,6 +81,18 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
+      end
+      it 'passwordが半角数字のみでは登録できない' do
+        @user.password = "111111"
+        @user.password_confirmation = "111111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include 'Password is invalid. Include both letters and numbers'
+      end
+      it 'passwordが半角英字のみでは登録できない' do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include 'Password is invalid. Include both letters and numbers'
       end
       it 'lastname_fullが半角では登録できない' do
         @user.lastname_full = 'test'
