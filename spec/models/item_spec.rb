@@ -62,6 +62,46 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("User must exist")
       end
+      it 'priceに半角数字以外が含まれている場合は出品できない' do
+        @item.price = '10000あ'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it 'priceが300円未満では出品できない' do
+        @item.price = '299'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+      it ' priceが9999999円を超えると出品できない' do
+        @item.price = '10000000'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it 'category_idが未選択(id = 1)では出品できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'status_idが未選択(id = 1)では出品できない' do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status can't be blank")
+      end
+      it 'shippingfee_payer_idが未選択(id = 1)では出品できない' do
+        @item.shippingfee_payer_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shippingfee payer can't be blank")
+      end
+      it 'prefecture_idが未選択(id = 1)では出品できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it 'shipping_day_idが未選択(id = 1)では出品できない' do
+        @item.shipping_day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping day can't be blank")
+      end
     end
   end
 end
