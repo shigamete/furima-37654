@@ -4,7 +4,7 @@ class PurchaseAddress
                 :purchase_id, :token
 
   with_options presence: true do
-    validates :municipalitie, :address, :user_id, :token
+    validates :municipalitie, :address, :user_id, :item_id, :token
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :phone_number, numericality: { only_integer: true }, length: { minimum: 10, maximum: 11 }
   end

@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe PurchaseAddress, type: :model do
   before do
-    user1 = FactoryBot.create(:user)
-    user2 = FactoryBot.create(:user)
-    @purchase_address = FactoryBot.build(:purchase_address, user_id: user1.id, purchase_id: user2.id)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    sleep 0.1 
+    @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id)
   end
 
   describe '商品購入' do
@@ -77,6 +78,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.user_id = nil
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが紐付いていなければ購入できない' do
+        @purchase_address.item_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
