@@ -12,7 +12,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'post_code,prefecture_id,municipalitie,address,building_name,phone_number,tokenが存在すれば購入ができる' do
         expect(@purchase_address).to be_valid
       end
-      it 'building_nameが空でも登録できる' do
+      it 'building_nameが空でも購入できる' do
         @purchase_address.building_name = ''
         expect(@purchase_address).to be_valid
       end
