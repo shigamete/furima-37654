@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :only_the_person, only: [:edit, :destroy]
 
   def index
-    @items = Item.all.order('created_at DESC')
+    @items = Item.order('created_at DESC')
   end
 
   def new
@@ -54,5 +54,4 @@ class ItemsController < ApplicationController
   def only_the_person
     redirect_to root_path unless @item.user_id == current_user.id
   end
-
 end
