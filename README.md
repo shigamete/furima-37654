@@ -2,9 +2,23 @@
 
 ## users テーブル
 
-| Column             | Type    | Options                   |  
-| ---------------------------------------------------------|  
-| email              | string  | null: false, unique: true |  
+|&nbsp
+Column
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+|&nbsp
+Type
+&nbsp&nbsp&nbsp&nbsp
+|&nbsp
+Options
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|  
+|&nbsp---------------------------------------------------------&nbsp|  
+|&nbsp
+email
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+|&nbsp
+string
+&nbsp&nbsp
+|&nbspnull:&nbspfalse,&nbspunique:&nbsptrue&nbsp|  
 | encrypted_password | string  | null: false               |  
 | nickname           | string  | null: false               |  
 | lastname_full      | string  | null: false               |  
