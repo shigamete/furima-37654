@@ -4,7 +4,6 @@
 
 | Column             | Type    | Options                   |  
 |:---|:---|:---|
-| ---------------------------------------------------------|  
 | email              | string  | null: false, unique: true |  
 | encrypted_password | string  | null: false               |  
 | nickname           | string  | null: false               |  
@@ -21,7 +20,7 @@
 ## items テーブル
 
 | Column               | Type       | Options                        |  
-| -------------------------------------------------------------------|  
+|:---|:---|:---|
 | name                 | string     | null: false                    |  
 | explan               | text       | null: false                    |  
 | category_id          | integer    | null: false                    |  
@@ -39,7 +38,7 @@
 ## purchases テーブル
 
 | Column    | Type       | Options                        |  
-| --------------------------------------------------------|  
+|:---|:---|:---|
 | user      | references | null: false, foreing_key: true |  
 | item      | references | null: false, foreign_key: true |  
 
@@ -51,7 +50,7 @@
 ## shipping_addresses テーブル
 
 | Column            | Type       | Options                        |  
-| ----------------------------------------------------------------|  
+|:---|:---|:---|
 | post_code         | string     | null: false                    |  
 | prefecture_id     | integer    | null: false                    |  
 | municipalitie     | string     | null: false                    |  
