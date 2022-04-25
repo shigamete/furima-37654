@@ -50,7 +50,7 @@
 ## shipping_addresses テーブル
 
 | Column            | Type       | Options                        |  
-
+|:---|:---|:---|
 | post_code         | string     | null: false                    |  
 | prefecture_id     | integer    | null: false                    |  
 | municipalitie     | string     | null: false                    |  
